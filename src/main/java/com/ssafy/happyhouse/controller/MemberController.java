@@ -45,7 +45,6 @@ public class MemberController {
 			@RequestParam @ApiParam(value = "로그인 시 필요한 회원정보(아이디, 비밀번호).", required = true) Map<String, String> map) {
 		Map<String, Object> resultMap = new HashMap<>();
 		HttpStatus status = null;
-
 		try {
 			MemberDto loginMember = memberService.loginService(map);
 
