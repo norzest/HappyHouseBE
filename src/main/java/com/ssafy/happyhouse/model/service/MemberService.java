@@ -9,4 +9,5 @@ public interface MemberService {
 	MemberDto loginService(Map<String, String> map) throws Exception;
 	void updateService(MemberDto memberDto) throws Exception;
 	void deleteService(MemberDto memberDto) throws Exception;
+	MemberDto userInfo(String id) throws Exception;
 }

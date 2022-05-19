@@ -9,7 +9,7 @@ public interface MemberMapper {
 	//회원가입
 	void createMember(MemberDto memberDto) throws SQLException;
 	
-	//회원정보select
+	//회원정보 select
 	MemberDto selectMember(Map<String, String> map) throws SQLException;
 	
 	//회원정보수정
@@ -17,4 +17,8 @@ public interface MemberMapper {
 	
 	//회원탈퇴
 	void deleteMember(MemberDto memberDto) throws SQLException;
+	
+	//회원정보 select By Id
+	MemberDto selectMemberById(String id) throws SQLException;
+
 }

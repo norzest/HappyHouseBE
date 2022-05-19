@@ -27,4 +27,8 @@
 	<delete id="deleteMember" parameterType="MemberDto">
 		delete from member where id = #{id} and password = #{password}
 	</delete>
+	
+	<select id="selectMemberById" parameterType="string" resultType="MemberDto">
+		select * from member where id = #{id}
+	</select>
 </mapper>
