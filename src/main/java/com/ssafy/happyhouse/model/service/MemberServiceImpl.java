@@ -38,4 +38,9 @@ public class MemberServiceImpl implements MemberService {
 		memberMapper.deleteMember(memberDto);
 	}
 
+	@Override
+	public MemberDto userInfo(String id) throws Exception {
+		return memberMapper.selectMemberById(id);
+	}
+
 }
