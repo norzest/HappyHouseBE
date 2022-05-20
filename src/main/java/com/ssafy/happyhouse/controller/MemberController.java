@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -158,7 +159,7 @@ public class MemberController {
 	@ApiOperation(value = "회원 가입", notes = "회원 가입 시도", response = Map.class)
 	@PostMapping("/regist")
 	public ResponseEntity<Map<String, Object>> regist(
-			@RequestBody MemberDto member) {
+			@RequestBody @ApiParam(value = "회원 가입 시 필요한 회원정보(아이디, 비밀번호).", required = true) MemberDto member) {
 		Map<String, Object> resultMap = new HashMap<>();
 		HttpStatus status = null;
 		logger.debug("회원 가입 : {}", member.toString());
