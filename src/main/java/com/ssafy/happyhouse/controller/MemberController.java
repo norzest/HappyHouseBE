@@ -26,6 +26,7 @@ import com.ssafy.happyhouse.model.service.MemberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @Api("UserController")
 @RestController
@@ -157,10 +158,10 @@ public class MemberController {
 	@ApiOperation(value = "회원 가입", notes = "회원 가입 시도", response = Map.class)
 	@PostMapping("/regist")
 	public ResponseEntity<Map<String, Object>> regist(
-			@ApiParam(value = "회원 가입 시 필요한 회원정보(아이디, 비밀번호).", required = true) MemberDto member) {
+			@RequestBody MemberDto member) {
 		Map<String, Object> resultMap = new HashMap<>();
 		HttpStatus status = null;
-
+		logger.debug("회원 가입 : {}", member.toString());
 		try {
 			if (member != null) {
 
