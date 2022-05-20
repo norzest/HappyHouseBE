@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.mapper.LocalMapper">
+
+ 
+	<select id="selectDongList" parameterType="string" resultType="DongDto">
+		 select * from dongcode where dongcode like concat(#{gugunCode}, '%')
+	</select>
+	
+	<select id="selectGugunList" parameterType="string" resultType="GugunDto">
+		select * from guguncode where gugunCode like concat(#{sidoCode}, '%')
+	</select>
+	
+	<select id="selectSidoList" resultType="SidoDto">
+		select * from sidocode
+	</select>
+
+</mapper>

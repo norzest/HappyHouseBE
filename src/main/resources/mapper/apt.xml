@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.mapper.AptMapper">
+
+	<select id="selectAptList" parameterType="map"
+		resultType="AptDto">
+		select hi.aptCode as aptCode, hi.apartmentName as aptName, hd.dealAmount as dealAmount, hd.area as area, hi.jibun as jibun, 
+		STR_TO_DATE(concat(hd.dealYear,"-",hd.dealMonth,"-",hd.dealDay),
+		'%Y-%m-%d') as dealDate, lat, lng
+		from houseinfo as hi join housedeal as hd using (aptcode)
+		where dongcode= #{dongCode} and dealYear = #{year} and dealMonth = #{month}
+	</select>
+
+	<select id="searchAptList" parameterType="map"
+		resultType="AptDto">
+	</select>
+
+</mapper>

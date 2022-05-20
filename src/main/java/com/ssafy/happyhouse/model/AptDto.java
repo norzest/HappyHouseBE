@@ -1,7 +1,7 @@
 package com.ssafy.happyhouse.model;
 
 public class AptDto {
-	private int aptCode;
+	private long aptCode;
 	private String aptName;
 	private String dealAmount;
 	private String area;
@@ -16,10 +16,10 @@ public class AptDto {
 	public void setJibun(String jibun) {
 		this.jibun = jibun;
 	}
-	public int getAptCode() {
+	public long getAptCode() {
 		return aptCode;
 	}
-	public void setAptCode(int aptCode) {
+	public void setAptCode(long aptCode) {
 		this.aptCode = aptCode;
 	}
 	public String getAptName() {
