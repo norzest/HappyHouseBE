@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.happyhouse.model.DongDto;
 import com.ssafy.happyhouse.model.GugunDto;
+import com.ssafy.happyhouse.model.SidoDto;
 import com.ssafy.happyhouse.model.service.LocalService;
 
 @RestController
@@ -26,6 +27,16 @@ public class LocalController {
 	@Autowired
 	private LocalService localService;
 
+	@GetMapping("/sido")
+	public ResponseEntity<?> sido() {
+		try {
+			return new ResponseEntity<List<SidoDto>> (localService.getSidoList(), HttpStatus.OK);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return new ResponseEntity<Void> (HttpStatus.NOT_FOUND);
+		}
+	}
+	
 	@GetMapping("/gugun")
 	public ResponseEntity<?> gugun(@RequestParam("sidoCode") String sidoCode) {
 		logger.debug("현재 시/도 : {}", sidoCode);
