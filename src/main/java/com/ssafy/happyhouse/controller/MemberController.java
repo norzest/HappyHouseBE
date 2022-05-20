@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +32,7 @@ import io.swagger.annotations.ApiParam;
 @Api("UserController")
 @RestController
 @RequestMapping("/member")
+@CrossOrigin("*")
 public class MemberController {
 
 	public static final Logger logger = LoggerFactory.getLogger(MemberController.class);
@@ -132,7 +134,7 @@ public class MemberController {
 	@ApiOperation(value = "회원 정보 수정", notes = "회원 정보 수정 시도", response = Map.class)
 	@PutMapping("/modify")
 	public ResponseEntity<Map<String, Object>> modify(
-			@ApiParam(value = "회원 정보 수정 시 필요한 회원정보(아이디, 비밀번호).", required = true) MemberDto member) {
+			@RequestBody @ApiParam(value = "회원 정보 수정 시 필요한 회원정보(아이디, 비밀번호).", required = true) MemberDto member) {
 		Map<String, Object> resultMap = new HashMap<>();
 		HttpStatus status = null;
 
