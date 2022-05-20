@@ -1,8 +1,8 @@
 package com.ssafy.happyhouse.model;
 
 public class GugunDto {
-	String gugunCode;
-	String gugunName;
+	private String gugunCode;
+	private String gugunName;
 	
 	public String getGugunCode() {
 		return gugunCode;

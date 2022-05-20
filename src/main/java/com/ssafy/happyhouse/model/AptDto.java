@@ -1,14 +1,14 @@
 package com.ssafy.happyhouse.model;
 
 public class AptDto {
-	int aptCode;
-	String aptName;
-	String dealAmount;
-	String area;
-	String dealDate;
-	String lat;
-	String lng;
-	String jibun;
+	private int aptCode;
+	private String aptName;
+	private String dealAmount;
+	private String area;
+	private String dealDate;
+	private String lat;
+	private String lng;
+	private String jibun;
 	
 	public String getJibun() {
 		return jibun;

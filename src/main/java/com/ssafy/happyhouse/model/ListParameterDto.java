@@ -6,6 +6,7 @@ public class ListParameterDto {
 	private String word;
 	private int start;
 	private int currentPerPage;
+	private String boardType;
 
 	public String getKey() {
 		return key;
@@ -37,6 +38,14 @@ public class ListParameterDto {
 
 	public void setCurrentPerPage(int currentPerPage) {
 		this.currentPerPage = currentPerPage;
+	}
+
+	public String getBoardType() {
+		return boardType;
+	}
+
+	public void setBoardType(String boardType) {
+		this.boardType = boardType;
 	}
 
 }

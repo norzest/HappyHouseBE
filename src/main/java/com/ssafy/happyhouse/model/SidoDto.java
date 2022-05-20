@@ -1,8 +1,8 @@
 package com.ssafy.happyhouse.model;
 
 public class SidoDto {
-	String sidoCode;
-	String sidoName;
+	private String sidoCode;
+	private String sidoName;
 	
 	public String getSidoCode() {
 		return sidoCode;

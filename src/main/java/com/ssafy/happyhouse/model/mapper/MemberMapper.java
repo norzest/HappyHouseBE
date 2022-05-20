@@ -3,8 +3,11 @@ package com.ssafy.happyhouse.model.mapper;
 import java.sql.SQLException;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import com.ssafy.happyhouse.model.MemberDto;
 
+@Mapper
 public interface MemberMapper {
 	//회원가입
 	void createMember(MemberDto memberDto) throws SQLException;

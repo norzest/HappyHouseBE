@@ -1,10 +1,10 @@
 package com.ssafy.happyhouse.model;
 
 public class DongDto {
-	String dongCode;
-	String sidoName;
-	String gugunName;
-	String dongName;
+	private String dongCode;
+	private String sidoName;
+	private String gugunName;
+	private String dongName;
 	
 	public String getDongCode() {
 		return dongCode;
