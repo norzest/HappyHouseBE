@@ -37,7 +37,7 @@ public class BoardController {
 	private BoardService boardService;
 	
 	@ApiOperation(value = "list", notes = "게시판 리스트", response = Map.class)
-	@GetMapping("/list")
+	@GetMapping
 	public ResponseEntity<Map<String, Object>> list(
 			@RequestParam @ApiParam(value = "게시판 로드시 필요한 정보(페이지번호, 키워드, 검색명, 게시판 타입).", required = true) Map<String, String> map) {
 		logger.debug("키 : {}", map.get("key"));
@@ -47,8 +47,7 @@ public class BoardController {
 		try {
 			List<BoardDto> list = boardService.listArticle(map.get("pg"), map.get("key"), map.get("word"), map.get("boardType"));
 			PageNavigation navigation = boardService.makePageNavigation(map.get("pg"), map.get("key"), map.get("word"), map.get("boardType"));
-			logger.debug("게시판 정보 : {}", list);
-			logger.debug("페이지 정보 : {}", navigation);
+			logger.debug("게시판 불러오기 성공");
 			
 			resultMap.put("articles", list);
 			resultMap.put("navi", navigation);
