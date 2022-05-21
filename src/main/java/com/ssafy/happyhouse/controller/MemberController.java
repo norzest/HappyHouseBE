@@ -142,6 +142,8 @@ public class MemberController {
 			if (member != null) {
 				memberService.updateService(member);
 				logger.debug("회원 정보 수정 : {}", member.toString());
+				MemberDto memberDto = memberService.userInfo(member.getId());
+				resultMap.put("userInfo", memberDto);
 				resultMap.put("message", SUCCESS);
 				status = HttpStatus.ACCEPTED;
 			} else {
