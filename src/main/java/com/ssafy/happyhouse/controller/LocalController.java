@@ -53,7 +53,7 @@ public class LocalController {
 		logger.debug("현재 구/군 : {}", gugunCode);
 		try {
 			List<DongDto> list = localService.getDongList(gugunCode);
-			logger.debug("첫번째 동 : {}", list.get(0).getDongName());
+			list.remove(0);
 			return new ResponseEntity<List<DongDto>> (list, HttpStatus.OK);
 		} catch (SQLException e) {
 			e.printStackTrace();
