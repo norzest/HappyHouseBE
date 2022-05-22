@@ -67,4 +67,9 @@
 		where boardType = #{boardType}
 		<include refid="search"></include>
 	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="hitCounter" parameterType="String">
+		update board set hit = hit+1 where id = #{id}
+	</update>
 </mapper>

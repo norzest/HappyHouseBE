@@ -11,6 +11,6 @@ public interface BoardService {
 	boolean registerArticle(BoardDto boardDto) throws Exception;
 	boolean updateArticle(BoardDto boardDto) throws Exception;
 	boolean deleteArticle(int id) throws Exception;
-	
+	void hitCounter(String id) throws Exception;
 	PageNavigation makePageNavigation(String pg, String key, String word, String boardType) throws Exception;
 }

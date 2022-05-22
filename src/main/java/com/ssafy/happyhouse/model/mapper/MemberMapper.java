@@ -23,5 +23,7 @@ public interface MemberMapper {
 	
 	//회원정보 select By Id
 	MemberDto selectMemberById(String id) throws SQLException;
+	
+	
 
 }

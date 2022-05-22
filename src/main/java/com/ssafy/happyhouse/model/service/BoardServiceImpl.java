@@ -76,5 +76,11 @@ public class BoardServiceImpl implements BoardService {
 		pageNavigation.makeNavigator();
 		return pageNavigation;
 	}
+	
+	@Override
+	public void hitCounter(String id) throws Exception {
+		boardMapper.hitCounter(id);
+		
+	}
 
 }

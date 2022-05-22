@@ -17,4 +17,5 @@ public interface BoardMapper {
 	int updateArticle(BoardDto boardDto) throws SQLException;
 	int deleteArticle(int id) throws SQLException;
 	int getTotalCount(ListParameterDto listParameterDto) throws SQLException;
+	void hitCounter(String id) throws SQLException;
 }

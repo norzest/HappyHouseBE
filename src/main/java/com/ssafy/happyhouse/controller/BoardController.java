@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,13 +38,13 @@ public class BoardController {
 	private BoardService boardService;
 	
 	@ApiOperation(value = "list", notes = "게시판 리스트", response = Map.class)
-	@GetMapping
+	@GetMapping("/list")
 	public ResponseEntity<Map<String, Object>> list(
 			@RequestParam @ApiParam(value = "게시판 로드시 필요한 정보(페이지번호, 키워드, 검색명, 게시판 타입).", required = true) Map<String, String> map) {
 		logger.debug("키 : {}", map.get("key"));
 		Map<String, Object> resultMap = new HashMap<>();
 		HttpStatus status = null;
-		
+
 		try {
 			List<BoardDto> list = boardService.listArticle(map.get("pg"), map.get("key"), map.get("word"), map.get("boardType"));
 			PageNavigation navigation = boardService.makePageNavigation(map.get("pg"), map.get("key"), map.get("word"), map.get("boardType"));
@@ -63,6 +64,25 @@ public class BoardController {
 		}
 
 		return new ResponseEntity<Map<String, Object>>(resultMap, status);
+	}
+	@ApiOperation(value = "hit", notes = "게시판 리스트", response = Map.class)
+	@PostMapping("/hit")
+	public ResponseEntity<Map<String, Object>> hitCounter(@RequestParam String id){
+		System.out.println("ghcnf");
+		Map<String, Object> resultMap = new HashMap<>();
+		HttpStatus status = null;
+		System.out.println(id);
+		try {
+			boardService.hitCounter(id);
+			logger.debug("조회수 증가 성공");
+			resultMap.put("message", SUCCESS);
+			status = HttpStatus.ACCEPTED;
+		}catch(Exception e) {
+			logger.error("조회수 증가 실패 : {}", e);
+			resultMap.put("message", e.getMessage());
+			status = HttpStatus.INTERNAL_SERVER_ERROR;
+		}
+		return  new ResponseEntity<Map<String, Object>>(resultMap, status);
 	}
 	
 }
