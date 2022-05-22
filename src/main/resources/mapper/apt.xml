@@ -8,7 +8,7 @@
 	<select id="selectAptList" parameterType="map"
 		resultType="AptDto">
 		select hi.aptCode as aptCode, hi.apartmentName as aptName, hd.dealAmount as dealAmount, hd.area as area, hi.jibun as jibun,
-		hi.roadName as roadName, hi.dong as dong, 
+		hi.roadName as roadName, hi.dong as dong, hd.floor as floor,
 		STR_TO_DATE(concat(hd.dealYear,"-",hd.dealMonth,"-",hd.dealDay),
 		'%Y-%m-%d') as dealDate, lat, lng
 		from houseinfo as hi join housedeal as hd using (aptcode)

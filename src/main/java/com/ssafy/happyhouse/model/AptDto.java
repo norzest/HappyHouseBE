@@ -11,6 +11,7 @@ public class AptDto {
 	private String jibun;
 	private String roadName;
 	private String dong;
+	private String floor;
 
 	public String getJibun() {
 		return jibun;
@@ -90,6 +91,14 @@ public class AptDto {
 
 	public void setDong(String dong) {
 		this.dong = dong;
+	}
+
+	public String getFloor() {
+		return floor;
+	}
+
+	public void setFloor(String floor) {
+		this.floor = floor;
 	}
 
 }
