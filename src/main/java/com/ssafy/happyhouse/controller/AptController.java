@@ -27,10 +27,12 @@ public class AptController {
 	@Autowired
 	private AptService aptService;
 
-	// parameter : dongCode(예. 1111011500), year(예. 2020), month(예. 07)
+	// parameter : dongCode(예. 1111011500), year(예. 2020), month(예. 07), apartmentName(예. 자이)
 	@GetMapping("/dongApt")
 	private ResponseEntity<?> markApt(@RequestParam Map<String, String> map) {
 		logger.debug("동코드 : {}", map.get("dongCode"));
+		logger.debug("년도 : {}", map.get("year"));
+		logger.debug("월 : {}", map.get("month"));
 		try {
 			return new ResponseEntity<List<AptDto>>(aptService.getAptList(map), HttpStatus.OK);
 		} catch (Exception e) {

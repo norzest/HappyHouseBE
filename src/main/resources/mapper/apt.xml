@@ -4,13 +4,29 @@
 
 <mapper namespace="com.ssafy.happyhouse.model.mapper.AptMapper">
 
+
 	<select id="selectAptList" parameterType="map"
 		resultType="AptDto">
-		select hi.aptCode as aptCode, hi.apartmentName as aptName, hd.dealAmount as dealAmount, hd.area as area, hi.jibun as jibun, 
+		select hi.aptCode as aptCode, hi.apartmentName as aptName, hd.dealAmount as dealAmount, hd.area as area, hi.jibun as jibun,
+		hi.roadName as roadName, hi.dong as dong, 
 		STR_TO_DATE(concat(hd.dealYear,"-",hd.dealMonth,"-",hd.dealDay),
 		'%Y-%m-%d') as dealDate, lat, lng
 		from houseinfo as hi join housedeal as hd using (aptcode)
-		where dongcode= #{dongCode} and dealYear = #{year} and dealMonth = #{month}
+		<where>
+		<if test="apartmentName != null">
+			and hi.apartmentName like concat('%', #{apartmentName}, '%')
+		</if>
+		<if test="dongCode != null">
+			and hi.dongcode= #{dongCode}
+		</if>
+		<if test="year != null">
+			and hd.dealYear= #{year}
+		</if>
+		<if test="month != null">
+			and hd.dealMonth= #{month}
+		</if>
+		</where>
+		limit 0, 200;
 	</select>
 
 	<select id="searchAptList" parameterType="map"
