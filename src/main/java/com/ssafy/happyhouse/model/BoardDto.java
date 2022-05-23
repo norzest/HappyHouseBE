@@ -20,6 +20,8 @@ public class BoardDto {
 	private int hit;
 	@ApiModelProperty(value = "게시글 타입")
 	private String boardType;
+	@ApiModelProperty(value = "댓글 수")	
+	private int reply;
 
 	public int getId() {
 		return id;

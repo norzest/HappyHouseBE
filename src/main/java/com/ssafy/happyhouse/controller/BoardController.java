@@ -84,5 +84,27 @@ public class BoardController {
 		}
 		return  new ResponseEntity<Map<String, Object>>(resultMap, status);
 	}
-	
+	//selectArticle
+	@ApiOperation(value = "detail", notes = "게시글 상세조회", response = Map.class)
+	@GetMapping("/detail")
+	public ResponseEntity<Map<String, Object>> selectDetail(@RequestParam String id) {
+		
+		Map<String, Object> resultMap = new HashMap<>();
+		HttpStatus status = null;
+
+		try {
+			BoardDto board = boardService.selectArticle(Integer.parseInt(id));
+			logger.debug("게시글 불러오기 성공");
+			
+			resultMap.put("article", board);
+			resultMap.put("message", SUCCESS);
+			status = HttpStatus.ACCEPTED;
+		} catch (Exception e) {
+			logger.error("게시글 불러오기 실패 : {}", e);
+			resultMap.put("message", e.getMessage());
+			status = HttpStatus.INTERNAL_SERVER_ERROR;
+		}
+
+		return new ResponseEntity<Map<String, Object>>(resultMap, status);
+	}
 }

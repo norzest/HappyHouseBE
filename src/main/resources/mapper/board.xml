@@ -28,17 +28,10 @@
 
 	<!-- 게시글 조회 -->
 	<select id="selectArticle" resultType="BoardDto" parameterType="int">
-		select id, title, writerId, createdAt, hit, content
+		select id, title, content, createdAt, writerId, hit, boardType, reply
 		from board 
 		where id = #{id}
 	</select>
-
-	<!-- 게시글 조회수 증가 -->
-	<update id="updateHit" parameterType="int">
-		update board
-		set hit = hit + 1
-		where id = #{id}
-	</update>
 
 	<!-- 게시글 등록 -->
 	<insert id="registerArticle" parameterType="BoardDto">

@@ -12,7 +12,6 @@ import com.ssafy.happyhouse.model.ListParameterDto;
 public interface BoardMapper {
 	List<BoardDto> listArticle(ListParameterDto listParameterDto) throws SQLException;
 	BoardDto selectArticle(int id) throws SQLException;
-	public void updateHit(int id) throws SQLException;
 	int registerArticle(BoardDto boardDto) throws SQLException;
 	int updateArticle(BoardDto boardDto) throws SQLException;
 	int deleteArticle(int id) throws SQLException;
