@@ -8,5 +8,7 @@ import com.ssafy.happyhouse.model.AptDto;
 
 public interface AptMapper {
 	public List<AptDto> selectAptList(Map<String, String> map) throws SQLException;
-	public List<AptDto> searchApt(Map<String, String> map) throws SQLException;
+	public List<AptDto> searchInterestedApt(Map<String, String> map) throws SQLException;
+	public int deleteInterestedApt(Map<String, String> map) throws SQLException;
+	public int registInterestedApt(Map<String, String> map) throws SQLException;
 }

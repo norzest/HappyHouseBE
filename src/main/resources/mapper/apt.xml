@@ -29,8 +29,20 @@
 		limit 0, 200;
 	</select>
 
-	<select id="searchAptList" parameterType="map"
+	<select id="searchInterestedApt" parameterType="map"
 		resultType="AptDto">
+		select aptCode, dong, roadName, jibun, apartmentName as aptName
+		from followapt as fa join houseinfo as hi using(aptCode)
+		where fa.memberId = #{memberId}
+		limit 0, 10;
 	</select>
+	
+	<insert id="registInterestedApt" parameterType="map">
+		insert into followapt (aptCode, memberId) value (#{aptCode}, #{memberId})
+	</insert>
+	
+	<delete id="deleteInterestedApt" parameterType="map">
+		delete from followapt where aptCode = #{aptCode} and memberId = #{memberId}
+	</delete>
 
 </mapper>

@@ -7,5 +7,7 @@ import com.ssafy.happyhouse.model.AptDto;
 
 public interface AptService {
 	public List<AptDto> getAptList(Map<String, String> map) throws Exception;
-	public List<AptDto> searchApt(Map<String, String> map) throws Exception;
+	public List<AptDto> searchInterestedApt(Map<String, String> map) throws Exception;
+	public boolean deleteInterestedApt(Map<String, String> map) throws Exception;
+	public boolean registInterestedApt(Map<String, String> map) throws Exception;
 }

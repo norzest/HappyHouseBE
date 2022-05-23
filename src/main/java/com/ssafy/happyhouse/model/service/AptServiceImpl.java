@@ -21,8 +21,18 @@ public class AptServiceImpl implements AptService {
 	}
 
 	@Override
-	public List<AptDto> searchApt(Map<String, String> map) throws Exception {
-		return aptMapper.searchApt(map);
+	public List<AptDto> searchInterestedApt(Map<String, String> map) throws Exception {
+		return aptMapper.searchInterestedApt(map);
+	}
+
+	@Override
+	public boolean deleteInterestedApt(Map<String, String> map) throws Exception {
+		return aptMapper.deleteInterestedApt(map) == 1;
+	}
+
+	@Override
+	public boolean registInterestedApt(Map<String, String> map) throws Exception {
+		return aptMapper.registInterestedApt(map) == 1;
 	}
 
 }
