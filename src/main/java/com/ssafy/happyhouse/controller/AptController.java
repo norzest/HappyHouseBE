@@ -59,7 +59,8 @@ public class AptController {
 	@PostMapping("/followApt")
 	private ResponseEntity<?> registFollowApt(@RequestParam Map<String, String> map) {
 		Map<String, Object> resultMap = new HashMap<>();
-		
+		logger.debug("관심목록 입력 aptCode: {}", map.get("aptCode"));
+		logger.debug("관심목록 입력 memberId: {}", map.get("memberId"));
 		try {
 			aptService.registInterestedApt(map);
 			resultMap.put("message", "success");
