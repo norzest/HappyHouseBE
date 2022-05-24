@@ -12,5 +12,6 @@ import com.ssafy.happyhouse.model.AptCommentDto;
 public interface AptCommentMapper {
 	public List<AptCommentDto> selectAptCommentList(Map<String, String> map) throws SQLException;
 	public int registAptComment(Map<String, String> map) throws SQLException;
+	public int updateAptComment(Map<String, String> map) throws SQLException;
 	public int deleteAptComment(Map<String, String> map) throws SQLException;
 }

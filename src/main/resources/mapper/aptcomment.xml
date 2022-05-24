@@ -16,6 +16,10 @@
 		value (#{writerId}, #{aptCode}, #{content}, now());
 	</insert>
 	
+	<update id="updateAptComment" parameterType="map">
+		update aptcomment set content = #{content} where commentId = #{commentId};
+	</update>
+	
 	<delete id="deleteAptComment" parameterType="map">
 		delete from aptcomment where commentId = #{commentId};
 	</delete>

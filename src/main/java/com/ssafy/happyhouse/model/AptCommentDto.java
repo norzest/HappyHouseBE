@@ -5,7 +5,7 @@ public class AptCommentDto {
 	private String writerId;
 	private long aptCode;
 	private String content;
-	private String createAt;
+	private String createdAt;
 
 	public String getCommentId() {
 		return commentId;
@@ -39,12 +39,12 @@ public class AptCommentDto {
 		this.content = content;
 	}
 
-	public String getCreateAt() {
-		return createAt;
+	public String getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setCreateAt(String createAt) {
-		this.createAt = createAt;
+	public void setCreatedAt(String createAt) {
+		this.createdAt = createAt;
 	}
 
 }

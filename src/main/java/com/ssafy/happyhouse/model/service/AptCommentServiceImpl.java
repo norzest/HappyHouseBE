@@ -26,6 +26,11 @@ public class AptCommentServiceImpl implements AptCommentService {
 	}
 
 	@Override
+	public boolean updateAptComment(Map<String, String> map) throws Exception {
+		return aptCommentMapper.updateAptComment(map) == 1;
+	}
+	
+	@Override
 	public boolean deleteAptComment(Map<String, String> map) throws Exception {
 		return aptCommentMapper.deleteAptComment(map) == 1;
 	}
