@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.model.mapper.AptCommentMapper">
+
+
+	<select id="selectAptCommentList" parameterType="map"
+		resultType="AptCommentDto">
+		select commentId, writerId, aptCode, content, createdAt
+		from aptcomment where aptCode = #{aptCode}
+	</select>
+	
+	<insert id="registAptComment" parameterType="map">
+		insert into aptcomment (writerId, aptCode, content, createdAt)
+		value (#{writerId}, #{aptCode}, #{content}, now());
+	</insert>
+	
+	<delete id="deleteAptComment" parameterType="map">
+		delete from aptcomment where commentId = #{commentId};
+	</delete>
+
+</mapper>
