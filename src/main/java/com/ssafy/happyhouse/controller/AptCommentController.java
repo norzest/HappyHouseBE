@@ -1,5 +1,6 @@
 package com.ssafy.happyhouse.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,12 +30,29 @@ public class AptCommentController {
 	private AptCommentService aptCommentService;
 	
 	// params : aptCode
-	@GetMapping("/getcomment")
+	@GetMapping("/comment")
 	private ResponseEntity<?> getAptComment(@RequestParam Map<String, String> map) {
-		logger.debug("아파트 댓글 : {}", map.get("aptCode"));
+		logger.debug("아파트 댓글 불러오기 : {}", map.get("aptCode"));
 		
 		try {
 			return new ResponseEntity<List<AptCommentDto>>(aptCommentService.selectAptCommentList(map), HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<Void> (HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	// params : writerId, aptCode, content
+	@PostMapping("/comment")
+	private ResponseEntity<?> registAptComment(@RequestParam Map<String, String> map) {
+		Map<String, Object> resultMap = new HashMap<>();
+		logger.debug("아파트 댓글 작성 : {}", map.get("aptCode"));
+		logger.debug("아파트 댓글 작성 : {}", map.get("writerId"));
+		
+		try {
+			aptCommentService.registAptComment(map);
+			resultMap.put("message", "success");
+			return new ResponseEntity<Map<String, Object>>(resultMap, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<Void> (HttpStatus.NOT_FOUND);
