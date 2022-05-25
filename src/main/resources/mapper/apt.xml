@@ -26,7 +26,7 @@
 			and hd.dealMonth= #{month}
 		</if>
 		</where>
-		limit 0, 200
+		limit 0, 500
 	</select>
 
 	<select id="searchInterestedApt" parameterType="map"
