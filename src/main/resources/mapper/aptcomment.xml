@@ -9,6 +9,7 @@
 		resultType="AptCommentDto">
 		select commentId, writerId, aptCode, content, createdAt
 		from aptcomment where aptCode = #{aptCode}
+		order by commentId desc
 	</select>
 	
 	<insert id="registAptComment" parameterType="map">

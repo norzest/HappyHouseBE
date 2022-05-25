@@ -24,6 +24,8 @@ public interface MemberMapper {
 	//회원정보 select By Id
 	MemberDto selectMemberById(String id) throws SQLException;
 	
+	//비밀번호 변경
+	void updatePassword(MemberDto memberDto) throws SQLException;
 	
 
 }

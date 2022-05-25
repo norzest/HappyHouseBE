@@ -81,7 +81,6 @@ public class MemberController {
 
 		Map<String, Object> resultMap = new HashMap<>();
 		HttpStatus status = HttpStatus.ACCEPTED;
-
 		if (jwtService.isUsable(request.getHeader("access-token"))) {
 			logger.info("사용 가능 토큰");
 			try {
@@ -185,5 +184,56 @@ public class MemberController {
 
 		return new ResponseEntity<Map<String, Object>>(resultMap, status);
 	}
+	@ApiOperation(value = "아이디찾기", notes = "비밀번호 찾기를 위한 아이디 찾기", response = Map.class)
+	@GetMapping("/find/{memberid}")
+	public ResponseEntity<Map<String, Object>> searchId(
+			@PathVariable("memberid") @ApiParam(value = "회원의 아이디.", required = true) String id,
+			HttpServletRequest request) {
 
+		Map<String, Object> resultMap = new HashMap<>();
+		HttpStatus status = HttpStatus.ACCEPTED;
+		MemberDto memberDto = null;
+		try {
+			memberDto = memberService.userInfo(id);
+			if(memberDto != null) {
+				resultMap.put("email", memberDto.getEmail());
+				resultMap.put("message", SUCCESS);
+				status = HttpStatus.ACCEPTED;				
+			}
+			else {
+				resultMap.put("message", FAIL);
+			}
+		} catch (Exception e) {
+			logger.error("정보조회 실패 : {}", e);
+			resultMap.put("message", e);
+			status = HttpStatus.INTERNAL_SERVER_ERROR;
+		}
+
+		return new ResponseEntity<Map<String, Object>>(resultMap, status);
+	}
+	
+	@ApiOperation(value = "비밀번호 수정", notes = "비밀번호 시도", response = Map.class)
+	@PutMapping("/modifypwd")
+	public ResponseEntity<Map<String, Object>> modifyPwd(
+			@RequestBody @ApiParam(value = "비밀번호 수정 시 필요한 회원정보.", required = true) MemberDto member) {
+		Map<String, Object> resultMap = new HashMap<>();
+		HttpStatus status = null;
+
+		try {
+			if (member != null) {
+				memberService.passwordChange(member);
+				resultMap.put("message", SUCCESS);
+				status = HttpStatus.ACCEPTED;
+			} else {
+				resultMap.put("message", FAIL);
+				status = HttpStatus.ACCEPTED;
+			}
+		} catch (Exception e) {
+			logger.error("회원 정보 수정 실패 : {}", e);
+			resultMap.put("message", e.getMessage());
+			status = HttpStatus.INTERNAL_SERVER_ERROR;
+		}
+
+		return new ResponseEntity<Map<String, Object>>(resultMap, status);
+	}
 }

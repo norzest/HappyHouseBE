@@ -42,7 +42,11 @@ public class MemberServiceImpl implements MemberService {
 	public MemberDto userInfo(String id) throws Exception {
 		return memberMapper.selectMemberById(id);
 	}
-
+	
+	@Override
+	public void passwordChange(MemberDto memberDto) throws Exception {
+		memberMapper.updatePassword(memberDto);
+	}
 	
 
 }
