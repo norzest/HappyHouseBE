@@ -88,22 +88,22 @@ public class PageNavigation {
 
 		StringBuilder buffer = new StringBuilder();
 		buffer.append("		<ul class=\"pagination pagination-sm pd\" style=\"justify-content:center\"> \n");
-		buffer.append("			<li class=\"page-item\" data-pg=\"1\"> \n");
+		buffer.append("			<li class=\"page-item\" data-pg=\"1\" v-on:click=\"pgListArticle\"> \n");
 		buffer.append("				<a href=\"#\" class=\"page-link\">최신</a> \n");
 		buffer.append("			</li> \n");
 		buffer.append(
-				"			<li class=\"page-item\" data-pg=\"" + (this.startRange ? 1 : (startPage - 1)) + "\"> \n");
+				"			<li class=\"page-item\" v-on:click=\"pgListArticle\" data-pg=\"" + (this.startRange ? 1 : (startPage - 1)) + "\"> \n");
 		buffer.append("				<a href=\"#\" class=\"page-link\">이전</a> \n");
 		buffer.append("			</li> \n");
 		for (int i = startPage; i <= endPage; i++) {
 			buffer.append("			<li class=\"" + (currentPage == i ? "page-item active" : "page-item")
-					+ "\" data-pg=\"" + i + "\"><a href=\"#\" class=\"page-link\">" + i + "</a></li> \n");
+					+ "\" data-pg=\"" + i + "\" v-on:click=\"pgListArticle\" ><a href=\"#\" class=\"page-link\">" + i + "</a></li> \n");
 		}
 		buffer.append(
-				"			<li class=\"page-item\" data-pg=\"" + (this.endRange ? endPage : (endPage + 1)) + "\"> \n");
+				"			<li class=\"page-item\" v-on:click=\"pgListArticle\" data-pg=\"" + (this.endRange ? endPage : (endPage + 1)) + "\"> \n");
 		buffer.append("				<a href=\"#\" class=\"page-link\">다음</a> \n");
 		buffer.append("			</li> \n");
-		buffer.append("			<li class=\"page-item\" data-pg=\"" + totalPageCount + "\"> \n");
+		buffer.append("			<li class=\"page-item\" v-on:click=\"pgListArticle\" data-pg=\"" + totalPageCount + "\"> \n");
 		buffer.append("				<a href=\"#\" class=\"page-link\">마지막</a> \n");
 		buffer.append("			</li> \n");
 		buffer.append("		</ul> \n");
