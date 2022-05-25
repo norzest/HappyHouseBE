@@ -17,7 +17,13 @@
 			and hi.apartmentName like concat('%', #{apartmentName}, '%')
 		</if>
 		<if test="dongCode != null">
-			and hi.dongcode= #{dongCode}
+			and hi.dongcode like concat('%', #{dongCode}, '%')
+		</if>
+		<if test="gugunCode != null">
+			and hi.dongcode like concat(#{gugunCode}, '%')
+		</if>
+		<if test="sidoCode != null">
+			and hi.dongcode like concat(#{sidoCode}, '%')
 		</if>
 		<if test="year != null">
 			and hd.dealYear= #{year}
@@ -26,7 +32,7 @@
 			and hd.dealMonth= #{month}
 		</if>
 		</where>
-		limit 0, 500
+		limit 0, 1000
 	</select>
 
 	<select id="searchInterestedApt" parameterType="map"

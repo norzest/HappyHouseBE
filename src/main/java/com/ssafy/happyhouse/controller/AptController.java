@@ -33,6 +33,8 @@ public class AptController {
 	// parameter : dongCode(예. 1111011500), year(예. 2020), month(예. 07), apartmentName(예. 자이)
 	@GetMapping("/dongApt")
 	private ResponseEntity<?> markApt(@RequestParam Map<String, String> map) {
+		logger.debug("시도코드 : {}", map.get("sidoCode"));
+		logger.debug("구군코드 : {}", map.get("gugunCode"));
 		logger.debug("동코드 : {}", map.get("dongCode"));
 		logger.debug("년도 : {}", map.get("year"));
 		logger.debug("월 : {}", map.get("month"));
