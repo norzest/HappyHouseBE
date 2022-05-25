@@ -117,7 +117,6 @@ public class BoardController {
 		logger.debug("writeBoard - 호출");
 		try {
 			if (boardService.registerArticle(board)) {
-				System.out.println("???");
 				return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
 			}
 		} catch (Exception e) {

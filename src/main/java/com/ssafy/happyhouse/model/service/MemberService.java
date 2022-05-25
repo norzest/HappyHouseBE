@@ -10,5 +10,6 @@ public interface MemberService {
 	void updateService(MemberDto memberDto) throws Exception;
 	void deleteService(MemberDto memberDto) throws Exception;
 	MemberDto userInfo(String id) throws Exception;
+	void passwordChange(MemberDto memberDto) throws Exception;
 	
 }
